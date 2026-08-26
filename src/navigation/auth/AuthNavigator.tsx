@@ -8,19 +8,18 @@ const AuthStack = createNativeStackNavigator();
 export default function AuthNavigator()
 {
     return(
-        <AuthStack.Navigator initialRouteName="Login">
-            {/* 로그인 화면 등록 */}
+        <AuthStack.Navigator
+            screenOptions={{headerShown: false,}}
+            initialRouteName="Login"
+        >
             <AuthStack.Screen
                 name="Login"
                 component={LoginScreen}
                 options={{ headerShown: false }}
             />
-
-            {/* 2. 회원가입 화면 추가 */}
             <AuthStack.Screen
                 name="SignUp"
                 component={SignUpScreen}
-                options={{ title: "회원가입" }}
             />
         </AuthStack.Navigator> // 2. 닫는 태그 추가
     )

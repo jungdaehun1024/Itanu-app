@@ -12,7 +12,7 @@ export default function AppNavigator() {
     return (
         <RootStack.Navigator screenOptions={{ headerShown: false }}>
             {!isLoggedIn ? (
-                // 💡 방금 완성한 AuthNavigator를 화면(Screen) 단위로 등록!
+                //화면(Screen) 단위로 등록
                 <RootStack.Screen name="AuthGroup" component={AuthNavigator} />
             ) : (
                 null
