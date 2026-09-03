@@ -12,13 +12,18 @@ import {
     PHONE_PLACEHOLDER_TEXT,
     ID_REGEXP, PASSWORD_REGEXP, PHONE_REGEXP, ERROR_MESSAGES
 } from "../../utils/constants/auth.ts";
-import {isValidPassword} from "../../utils/validation.ts";
+import {useSignUpStore} from "../../store/auth/useSignUpStore.ts";
 
 export default function SignUpScreen() {
+
+    // Zutand  store에서 필요한 상태값, 액션 가져온다.
+
     //아이디
-    const [id, setId] = useState("");
+    const id = useSignUpStore((state) =>state.id );
+    const setId = useSignUpStore((state) =>state.setId)
     // 패스워드
-    const [password, setPassword] = useState("");
+    const password = useSignUpStore((state) =>state.password);
+    const setPassword = useSignUpStore((state) =>state.setPassword);
 
     //패스워드 확인
     const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -27,14 +32,9 @@ export default function SignUpScreen() {
     const isPasswordMatched = (password === passwordConfirm) && password.length >0;
 
     //휴대폰
-    const [phone, setPhone]   = useState("");
+    const phone = useSignUpStore((state) =>state.phone);
+    const setPhone = useSignUpStore((state) =>state.setPhone);
 
-
-    //휴대폰 번호 입력 각 자리에 숫자가 아니라 다른 값이 들어오면 안되도록
-    const handlePhoneNumberChange = (number:string) => {
-        const phoneNumber = extractNumbers(number);;
-        setPhone(phoneNumber);
-    };
 
     const [touched,setIsTouched] = useState({
         id : false,
@@ -129,7 +129,7 @@ export default function SignUpScreen() {
             <View className='flex-row items-center gap-1 '>
                 <Text>휴대폰</Text>
                 {!isPhoneValid && touched.phone && (
-                    <Text className="text-red-500 text-xs"> 올바른 휴대폰번호 형식이 아닙니다.</Text>
+                    <Text className="text-red-500 text-xs"> {ERROR_MESSAGES.INVALID_PHONE}</Text>
                 )}
             </View>
 
@@ -138,9 +138,7 @@ export default function SignUpScreen() {
                     value={phone}
                     maxLength={DEFAULT_PHONE_LENGTH}
                     placeholder={PHONE_PLACEHOLDER_TEXT}
-                    onChangeText={(text)=> {
-                        handlePhoneNumberChange(text)
-                    }}
+                    onChangeText={setPhone}
                     onBlur={()=> {
                         handleBlur('phone');
                     }}
