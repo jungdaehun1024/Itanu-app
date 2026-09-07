@@ -15,10 +15,15 @@ export const DEFAULT_PHONE_LENGTH = 11;
 export const PHONE_PLACEHOLDER_TEXT = "휴대폰번호: 11자리 숫자('-'제외)";
 export const PHONE_REGEXP = /^01[01]\d{8}$/; //010,011 뒤 8자리 검증
 
+//이름
+export  const MAX_NAME_LENGTH = 10;
+export const NAME_REGEXP = /^([a-zA-z]+|[가-힣]+)$///only 한글  또는  only영문
+export  const NAME_PLACEHOLDER_TEXT = "이름(영문 또는 한글)";
 //에러 메시지
 export const ERROR_MESSAGES = {
     INVALID_ID: "올바른 아이디 형식이 아닙니다.",
     INVALID_PASSWORD: "올바른 비밀번호 형식이 아닙니다.",
     PASSWORD_UNMATCHED: "비밀번호가 일치하지 않습니다.",
     INVALID_PHONE: "올바른 휴대폰번호 형식이 아닙니다.",
+    INVALID_NAME: "올바른 이름 형식이 아닙니다."
 };

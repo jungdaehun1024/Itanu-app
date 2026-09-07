@@ -10,7 +10,7 @@ export default function LoginScreen({navigation} : any)
     // 2. 이동 버튼 클릭 이벤트 핸들러
     const handleRegister = () => {
         // AuthNavigator나 AppNavigator에 등록해 둔 회원가입 화면의 name을 입력합니다.
-        navigation.navigate("SignUp"); // 예: 'Register' 또는 'SignUp'
+        navigation.navigate("SignupStep1"); // 예: 'Register' 또는 'SignUp'
     };
     return(
         <View className = {CONTAINER_STYLE}>

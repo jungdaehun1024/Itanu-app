@@ -1,7 +1,9 @@
 import React from 'react';
 import LoginScreen from '../../screens/auth/LoginScreen';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import SignUpScreen from "../../screens/auth/SignUpScreen";
+
+import SignupStep1 from "../../screens/auth/SignupStep1";
+import SignupStep2 from "../../screens/auth/SignupStep2";
 
 const AuthStack = createNativeStackNavigator();
 
@@ -18,10 +20,14 @@ export default function AuthNavigator()
                 options={{ headerShown: false }}
             />
             <AuthStack.Screen
-                name="SignUp"
-                component={SignUpScreen}
+                name="SignupStep1"
+                component={SignupStep1}
             />
-        </AuthStack.Navigator> // 2. 닫는 태그 추가
+            <AuthStack.Screen
+                name="SignupStep2"
+                component={SignupStep2}
+            />
+        </AuthStack.Navigator>
     )
 }
 

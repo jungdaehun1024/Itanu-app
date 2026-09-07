@@ -13,8 +13,9 @@ import {
     ID_REGEXP, PASSWORD_REGEXP, PHONE_REGEXP, ERROR_MESSAGES
 } from "../../utils/constants/auth.ts";
 import {useSignUpStore} from "../../store/auth/useSignUpStore.ts";
+import {useNavigation} from "@react-navigation/native";
 
-export default function SignUpScreen() {
+export default function SignupStep1() {
 
     // Zutand  store에서 필요한 상태값, 액션 가져온다.
 
@@ -63,6 +64,7 @@ export default function SignUpScreen() {
     //유효성검사로직
     const isFormValid = isIdValid && isPasswordValid && isPasswordMatched && isPhoneValid ;
 
+    const navigation = useNavigation();
     return (
         <View className="flex-1 justify-center p-4">
             <Text className="text-xl font-bold mb-4">회원가입</Text>
@@ -146,7 +148,7 @@ export default function SignUpScreen() {
                     keyboardType={"numeric"}
             />
             </View>
-            <Button title="다음"  disabled={!isFormValid} onPress={() => console.log(isPasswordMatched)} />
+            <Button title="다음"  disabled={!isFormValid} onPress={() => navigation.navigate("SignupStep2")} />
         </View>
     );
 }
