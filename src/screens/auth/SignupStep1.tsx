@@ -29,9 +29,6 @@ export default function SignupStep1() {
     //패스워드 확인
     const [passwordConfirm, setPasswordConfirm] = useState("");
 
-    //패스워드 & 패스워드확인 상태변수 값이 같은지 검증
-    const isPasswordMatched = (password === passwordConfirm) && password.length >0;
-
     //휴대폰
     const phone = useSignUpStore((state) =>state.phone);
     const setPhone = useSignUpStore((state) =>state.setPhone);
@@ -61,8 +58,11 @@ export default function SignupStep1() {
     const isPasswordValid = PASSWORD_REGEXP.test(password) && password.length >= MIN_PASSWORD_LENGTH;
     const isPhoneValid = PHONE_REGEXP.test(phone) && phone.length === DEFAULT_PHONE_LENGTH;
 
+    //패스워드 & 패스워드확인 상태변수 값이 같은지 검증
+    const isPasswordMatched = (password === passwordConfirm) && password.length >0 ;
+
     //유효성검사로직
-    const isFormValid = isIdValid && isPasswordValid && isPasswordMatched && isPhoneValid ;
+    const isFormValid = isIdValid && isPasswordValid && isPasswordMatched ;
 
     const navigation = useNavigation();
     return (

@@ -19,11 +19,19 @@ export const PHONE_REGEXP = /^01[01]\d{8}$/; //010,011 뒤 8자리 검증
 export  const MAX_NAME_LENGTH = 10;
 export const NAME_REGEXP = /^([a-zA-z]+|[가-힣]+)$///only 한글  또는  only영문
 export  const NAME_PLACEHOLDER_TEXT = "이름(영문 또는 한글)";
+
+//이메일
+export const MAX_EMAIL_LENGTH = 100;
+export const MIN_EMAIL_LENGTH = 10;
+export const EMAIL_REGEXP = /^[a-zA-Z\d]+@[a-zA-Z\d]+\.[a-z]+$/;
+export const EMAIL_PLACEHOLDER_TEXT = "이메일을 입력해주세요";
+
 //에러 메시지
 export const ERROR_MESSAGES = {
     INVALID_ID: "올바른 아이디 형식이 아닙니다.",
     INVALID_PASSWORD: "올바른 비밀번호 형식이 아닙니다.",
     PASSWORD_UNMATCHED: "비밀번호가 일치하지 않습니다.",
     INVALID_PHONE: "올바른 휴대폰번호 형식이 아닙니다.",
-    INVALID_NAME: "올바른 이름 형식이 아닙니다."
+    INVALID_NAME: "올바른 이름 형식이 아닙니다.",
+    INVALID_EMAIL: "올바른 이메일 형식이 아닙니다."
 };
